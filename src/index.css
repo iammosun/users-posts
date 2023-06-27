@@ -1,0 +1,52 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+/* Global Styles_________________________________*/
+
+.mainBody {
+  height: 100%;
+  max-width: 95%;
+  text-align: center;
+  vertical-align: auto;
+  margin: 2rem auto;
+  padding: 0;
+  font-size: 0.9rem;
+  color: black;
+}
+
+.h2{
+  font-size: 1.2rem;
+  padding-bottom: 2rem;
+}
+
+table, th, td {
+  border: 1px solid rgb(187, 187, 235);
+  border-collapse: collapse;
+}
+
+th, td{
+  padding: 1rem;
+}
+
+.flex{
+  display: flex;
+  margin-top: 0.5rem;
+  
+}
+
+.noBorder{
+  border: none;
+  cursor: pointer;
+}
+
+.cursor{
+  cursor: pointer;
+  background-color: rgb(210, 210, 234);
+}
