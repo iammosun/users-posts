@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
-  // const location = useLocation();
   const navigate = useNavigate();
   const { userId } = useParams();
 
@@ -25,9 +24,10 @@ const Posts = () => {
 
   return (
     <>
-      {/* <h1><u>{userName}'s Posts</u></h1><br /> */}
+      {/* <h1><u>{userName}'s Posts</u></h1><br /> */}jjjj
       <button className='noBorder' onClick={() => { navigate('/') }}><p>Go back</p></button>
       {posts.map(post => {
+        jj
         return (
           <div key={post.id} >
             <h3>TITLE: {post.title}</h3>
