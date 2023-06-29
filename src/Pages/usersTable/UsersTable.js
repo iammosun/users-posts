@@ -4,8 +4,11 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);
+  const [suite, setSuite] = useState(0);
+  const [appt, setAppt] = useState(0);
   const [isLoading, setIsloading] = useState(true);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -15,21 +18,29 @@ const UsersTable = () => {
 
       }).then(res => res.json())
         .then(data => {
-          // converting the received obj to array
-          // console.log(data);
           setUsers(data);
-          setIsloading(false);
-        });
+          let apptNow = 0;
+          let suiteNow = 0;
 
+          data.map(user => {
+            let fLetter = user.address.suite.charAt(0);
+            if (fLetter === 'A') apptNow += 1;
+            if (fLetter === 'S') suiteNow += 1;
+            return true;
+          });
+
+          setAppt(apptNow);
+          setSuite(suiteNow);
+          setIsloading(false);
+        })
     }, 1000);
   }, []);
 
-  let appt = 0;
-  let suite = 0;
 
   return (
     <>
       {isLoading && (<section className='mainBody' ><h1>loading...</h1></section>)}
+
 
       {!isLoading && (
         <section className='mainBody'>
@@ -48,9 +59,9 @@ const UsersTable = () => {
 
               {users.map(user => {
                 let newName;
-                let fLetter = user.address.suite.charAt(0);
-                if (fLetter === 'A') appt += 1;
-                if (fLetter === 'S') suite += 1;
+                // let fLetter = user.address.suite.charAt(0);
+                // if (fLetter === 'A') setApptNow();
+                // if (fLetter === 'S') setSuiteNow();
 
                 return (
                   <tr key={user.id}>
@@ -90,6 +101,7 @@ const UsersTable = () => {
                   </tr>
                 )
               })}
+
             </tbody>
           </table>
           <h2 className='h2'>There are {suite} users living in a Suite and {appt} users living in an Apartment. </h2>
@@ -98,5 +110,6 @@ const UsersTable = () => {
     </>
   );
 }
+
 
 export default UsersTable;

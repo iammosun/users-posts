@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const Posts = () => {
+const UsersPosts = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -38,4 +38,4 @@ const Posts = () => {
   );
 }
 
-export default Posts;
+export default UsersPosts;
