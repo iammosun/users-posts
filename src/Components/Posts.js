@@ -24,12 +24,11 @@ const Posts = () => {
 
   return (
     <>
-      {/* <h1><u>{userName}'s Posts</u></h1><br /> */}jjjj
+      {/* <h1><u>{userName}'s Posts</u></h1><br /> */}
       <button className='noBorder' onClick={() => { navigate('/') }}><p>Go back</p></button>
       {posts.map(post => {
-        jj
         return (
-          <div key={post.id} >
+          < div key={post.id} >
             <h3>TITLE: {post.title}</h3>
             <p>{post.body}</p><br />
           </div >
