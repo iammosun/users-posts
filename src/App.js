@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UsersTable from './Components/UsersTable';
-import Posts from './Components/Posts';
-import NameChanged from './Components/NameChanged';
+import UsersTable from './pages/usersTable/UsersTable';
+import Posts from './pages/usersPosts/UsersPosts';
+import NameChanged from './pages/nameChanged/NameChanged';
 
 function App() {
   return (
