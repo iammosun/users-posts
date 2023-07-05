@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const UsersPosts = () => {
   const [posts, setPosts] = useState([]);
-  const navigate = useNavigate();
   const { userId } = useParams();
 
 
@@ -25,7 +24,7 @@ const UsersPosts = () => {
   return (
     <>
       {/* <h1><u>{userName}'s Posts</u></h1><br /> */}
-      <button className='noBorder' onClick={() => { navigate('/') }}><p>Go back</p></button>
+      <Link to={'/'} className='cursor'>Go Back</Link>
       {posts.map(post => {
         return (
           < div key={post.id} >

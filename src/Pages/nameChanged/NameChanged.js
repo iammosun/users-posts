@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 
 const NameChanged = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const { userId, newName } = location.state;
   const [isLoading, setIsloading] = useState(true);
 
@@ -26,7 +25,7 @@ const NameChanged = () => {
           setIsloading(false);
         });
 
-    }, 1000);
+    }, 100);
   }, [userId, newName]);
 
 
@@ -37,7 +36,7 @@ const NameChanged = () => {
       {!isLoading && (
         <div>
           <h2>Name Changed Successfully!</h2>
-          <button onClick={() => { navigate('/') }}>Back</button>
+          <button><Link to={'/'} className='cursor'>Go Back</Link></button>
         </div>
       )}
     </>

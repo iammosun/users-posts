@@ -32,14 +32,13 @@ const UsersTable = () => {
           setSuite(suiteNow);
           setIsloading(false);
         })
-    }, 1000);
+    }, 100);
   }, []);
 
 
   return (
     <>
       {isLoading && (<section className='mainBody' ><h1>loading...</h1></section>)}
-
 
       {!isLoading && (
         <section className='mainBody'>
@@ -55,7 +54,6 @@ const UsersTable = () => {
                 <th>Company</th>
                 <th>View</th>
               </tr>
-
 
               <Mapping users={users} />
 

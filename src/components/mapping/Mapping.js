@@ -1,9 +1,27 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Mapping = (props) => {
-  const navigate = useNavigate();
   const users = props.users;
+
+  const changeNameClick = (newName, userId) => {
+    if (newName) {
+      fetch(`https://jsonplaceholder.typicode.com/users?id=${userId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          name: newName,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => response.json())
+        .then(json => {
+          console.log(json);
+        });
+    } else {
+      alert('input required');
+    }
+  }
 
   return (
     <>
@@ -22,21 +40,12 @@ const Mapping = (props) => {
                     onChange={(e) => newName = e.target.value} required
                   />
 
-                  <button className='noBorder' onClick={() => {
-                    if (newName) {
-                      navigate('/nameChanged', {
-                        state: {
-                          userId: user.id,
-                          newName: newName
-                        }
-                      })
-                    } else alert('Input Required!');
-                  }}>Submit</button>
+                  <Link to={'/'} className='cursor, noBorder' onClick={
+                    () => { changeNameClick(newName, user.id) }
+                  }>Submit</Link>
                 </form>
               </td>
-
               <td>{user.username}</td>
-
               <td>{user.email}</td>
               <td>
                 {user.address.street},
