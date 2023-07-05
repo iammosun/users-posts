@@ -1,40 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import Mapping from '../../components/mapping/Mapping';
+import useFetch from '../../hooks/useFetchHook/useFetch';
 
 
 const UsersTable = () => {
-  const [users, setUsers] = useState([]);
-  const [suite, setSuite] = useState(0);
-  const [appt, setAppt] = useState(0);
-  const [isLoading, setIsloading] = useState(true);
-
-
-  useEffect(() => {
-    setTimeout(() => {
-
-      fetch('https://jsonplaceholder.typicode.com/users', {
-        method: 'GET'
-
-      }).then(res => res.json())
-        .then(data => {
-          setUsers(data);
-          let apptNow = 0;
-          let suiteNow = 0;
-
-          // check each user address for 'Suite' for 'Appartment'
-          data.map(user => {
-            let fLetter = user.address.suite.charAt(0);
-            if (fLetter === 'A') apptNow += 1;
-            if (fLetter === 'S') suiteNow += 1;
-            return true;
-          });
-
-          setAppt(apptNow);
-          setSuite(suiteNow);
-          setIsloading(false);
-        })
-    }, 100);
-  }, []);
+  const { users, suite, appt, isLoading } =
+    useFetch('https://jsonplaceholder.typicode.com/users');
 
 
   return (
