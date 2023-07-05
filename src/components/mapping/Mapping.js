@@ -21,6 +21,9 @@ const Mapping = (props) => {
     } else {
       alert('input required');
     }
+
+    let inputField = document.getElementById('a' + userId)
+    inputField.value = '';
   }
 
   return (
@@ -35,7 +38,7 @@ const Mapping = (props) => {
                 <form className='flex'>
                   <label><b>Edit Name</b></label>
 
-                  <input type='text'
+                  <input id={'a' + user.id} type='text'
                     value={newName}
                     onChange={(e) => newName = e.target.value} required
                   />
