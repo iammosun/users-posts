@@ -21,6 +21,7 @@ const UsersTable = () => {
           let apptNow = 0;
           let suiteNow = 0;
 
+          // check each user address for 'Suite' for 'Appartment'
           data.map(user => {
             let fLetter = user.address.suite.charAt(0);
             if (fLetter === 'A') apptNow += 1;
