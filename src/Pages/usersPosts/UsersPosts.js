@@ -12,6 +12,7 @@ const UsersPosts = () => {
 
     }).then(res => res.json())
       .then(data => {
+
         // converting the received obj to array
         const postsArr = Object.keys(data).map(key => data[key]);
         setPosts(postsArr);
