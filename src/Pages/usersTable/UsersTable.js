@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import Mapping from '../../components/mapping/Mapping';
 
 
 const UsersTable = () => {
@@ -7,7 +7,6 @@ const UsersTable = () => {
   const [suite, setSuite] = useState(0);
   const [appt, setAppt] = useState(0);
   const [isLoading, setIsloading] = useState(true);
-  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -57,47 +56,8 @@ const UsersTable = () => {
                 <th>View</th>
               </tr>
 
-              {users.map(user => {
-                let newName;
 
-                return (
-                  <tr key={user.id}>
-                    <td><h3>{user.name}</h3>
-                      <form className='flex'>
-                        <label><b>Edit Name</b></label>
-
-                        <input type='text'
-                          value={newName}
-                          onChange={(e) => newName = e.target.value} required
-                        />
-
-                        <button className='noBorder' onClick={() => {
-                          if (newName) {
-                            navigate('/nameChanged', {
-                              state: {
-                                userId: user.id,
-                                newName: newName
-                              }
-                            })
-                          } else alert('Input Required!');
-                        }}>Submit</button>
-                      </form>
-                    </td>
-
-                    <td>{user.username}</td>
-
-                    <td>{user.email}</td>
-                    <td>
-                      {user.address.street}, {user.address.suite}, {user.address.city}, {user.address.zipcode}.
-                    </td>
-                    <td>{user.phone}</td>
-                    <td>{user.website}</td>
-                    <td>{user.company.name}</td>
-
-                    <td><Link to={'UsersPosts/' + user.id} className='cursor'>View Posts</Link></td>
-                  </tr>
-                )
-              })}
+              <Mapping users={users} />
 
             </tbody>
           </table>
