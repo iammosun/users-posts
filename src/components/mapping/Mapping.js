@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Mapping = (props) => {
   const users = props.users;
 
+  // POST new name to API and clear input field
   const changeNameClick = (newName, userId) => {
     if (newName) {
       fetch(`https://jsonplaceholder.typicode.com/users?id=${userId}`, {
@@ -22,9 +23,11 @@ const Mapping = (props) => {
       alert('input required');
     }
 
+    // clear the input field
     let inputField = document.getElementById('a' + userId)
     inputField.value = '';
   }
+
 
   return (
     <>
@@ -43,10 +46,12 @@ const Mapping = (props) => {
                     onChange={(e) => newName = e.target.value} required
                   />
 
+                  {/* POST the new name to API and redirect to homepage */}
                   <Link to={'/'} className='cursor, noBorder' onClick={
                     () => { changeNameClick(newName, user.id) }
                   }>Submit</Link>
                 </form>
+
               </td>
               <td>{user.username}</td>
               <td>{user.email}</td>
@@ -60,7 +65,10 @@ const Mapping = (props) => {
               <td>{user.website}</td>
               <td>{user.company.name}</td>
 
-              <td><Link to={'UsersPosts/' + user.id} className='cursor'>View Posts</Link></td>
+              <td><Link to={
+                'UsersPosts/' + user.id}
+                className='cursor'>View Posts
+              </Link></td>
             </tr>
           )
         })
