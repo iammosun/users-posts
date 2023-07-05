@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path='/posts/:userId' element={<UsersPosts />} />
+          <Route path='/UsersPosts/:userId' element={<UsersPosts />} />
           <Route path='/nameChanged' element={<NameChanged />} />
           <Route path='/' element={<UsersTable />} />
 

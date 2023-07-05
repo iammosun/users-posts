@@ -59,9 +59,6 @@ const UsersTable = () => {
 
               {users.map(user => {
                 let newName;
-                // let fLetter = user.address.suite.charAt(0);
-                // if (fLetter === 'A') setApptNow();
-                // if (fLetter === 'S') setSuiteNow();
 
                 return (
                   <tr key={user.id}>
@@ -97,7 +94,7 @@ const UsersTable = () => {
                     <td>{user.website}</td>
                     <td>{user.company.name}</td>
 
-                    <td><Link to={'posts/' + user.id} className='cursor'>View Posts</Link></td>
+                    <td><Link to={'UsersPosts/' + user.id} className='cursor'>View Posts</Link></td>
                   </tr>
                 )
               })}
