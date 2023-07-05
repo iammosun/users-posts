@@ -30,12 +30,14 @@ const UsersTable = () => {
 
             </tbody>
           </table>
-          <h2 className='h2'>There are {suite} users living in a Suite and {appt} users living in an Apartment. </h2>
+          <h2 className='h2'>There are
+            {suite} users living in a Suite and
+            {appt} users living in an Apartment.
+          </h2>
         </section >
       )}
     </>
   );
 }
-
 
 export default UsersTable;
