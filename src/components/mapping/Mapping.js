@@ -31,47 +31,46 @@ const Mapping = (props) => {
 
   return (
     <>
-      {
-        users.map(user => {
-          let newName;
+      {users.map(user => {
+        let newName;
 
-          return (
-            <tr key={user.id}>
-              <td><h3>{user.name}</h3>
-                <form className='flex'>
-                  <label><b>Edit Name</b></label>
+        return (
+          <tr key={user.id}>
+            <td><h3>{user.name}</h3>
+              <form className='flex'>
+                <label><b>Edit Name</b></label>
 
-                  <input id={'a' + user.id} type='text'
-                    value={newName}
-                    onChange={(e) => newName = e.target.value} required
-                  />
+                <input id={'a' + user.id} type='text'
+                  value={newName}
+                  onChange={(e) => newName = e.target.value} required
+                />
 
-                  {/* POST the new name to API and redirect to homepage */}
-                  <Link to={'/'} className='cursor, noBorder' onClick={
-                    () => { changeNameClick(newName, user.id) }
-                  }>Submit</Link>
-                </form>
+                {/* POST the new name to API and redirect to homepage */}
+                <Link to={'/'} className='cursor, noBorder' onClick={
+                  () => { changeNameClick(newName, user.id) }
+                }>Submit</Link>
+              </form>
 
-              </td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>
-                {user.address.street},
-                {user.address.suite},
-                {user.address.city},
-                {user.address.zipcode}.
-              </td>
-              <td>{user.phone}</td>
-              <td>{user.website}</td>
-              <td>{user.company.name}</td>
+            </td>
+            <td>{user.username}</td>
+            <td>{user.email}</td>
+            <td>
+              {user.address.street},
+              {user.address.suite},
+              {user.address.city},
+              {user.address.zipcode}.
+            </td>
+            <td>{user.phone}</td>
+            <td>{user.website}</td>
+            <td>{user.company.name}</td>
 
-              <td><Link to={
-                'UsersPosts/' + user.id}
-                className='cursor'>View Posts
-              </Link></td>
-            </tr>
-          )
-        })
+            <td><Link to={
+              'UsersPosts/' + user.id}
+              className='cursor'>View Posts
+            </Link></td>
+          </tr>
+        )
+      })
       }
     </>
   )
